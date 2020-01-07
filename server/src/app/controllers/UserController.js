@@ -4,10 +4,21 @@ import User from '../models/User';
 
 class UserController {
   async index(req, res) {
+    const { username } = req.query;
+    const where = {};
+
+    if (username) {
+      where.username = { [Op.iLike]: `%${username}%` };
+    }
+
     try {
       const users = await User.findAll({
         where: {
           stream_key: { [Op.ne]: null, [Op.ne]: '' },
+          ...where,
+        },
+        attributes: {
+          exclude: ['password_hash', 'stream_key'],
         },
       });
 
