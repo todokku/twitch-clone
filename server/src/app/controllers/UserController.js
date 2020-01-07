@@ -1,6 +1,22 @@
+import { Op } from 'sequelize';
+
 import User from '../models/User';
 
 class UserController {
+  async index(req, res) {
+    try {
+      const users = await User.findAll({
+        where: {
+          stream_key: { [Op.ne]: null, [Op.ne]: '' },
+        },
+      });
+
+      return res.status(200).json(users);
+    } catch (error) {
+      return res.status(500).error(error.message);
+    }
+  }
+
   async store(req, res) {
     try {
       const user = await User.create(req.body);
