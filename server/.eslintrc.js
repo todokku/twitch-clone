@@ -23,6 +23,8 @@ module.exports = {
     camelcase: 'off',
     'comma-dangle': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    curly: 'off',
+    'nonblock-statement-body-position': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
