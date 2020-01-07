@@ -78,6 +78,20 @@ class UserController {
       return res.status(500).json(error.message);
     }
   }
+
+  async delete(req, res) {
+    try {
+      const user = await User.findByPk(req.user_id);
+
+      if (!user) return res.status(404).json({ error: 'User not found.' });
+
+      await user.destroy();
+
+      return res.status(204).json();
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
 }
 
 export default new UserController();
