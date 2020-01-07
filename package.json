@@ -1,0 +1,13 @@
+{
+  "name": "twitch-clone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Victor Batalha <madivcb@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"cd client && yarn start\" \"cd server && yarn dev\""
+  },
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  }
+}
