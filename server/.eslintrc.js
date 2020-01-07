@@ -18,6 +18,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-console': 'off',
+    'arrow-parens': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
