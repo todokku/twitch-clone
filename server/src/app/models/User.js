@@ -19,10 +19,20 @@ class User extends Model {
       if (user.password) {
         user.password_hash = await bcrypt.hash(user.password, 10);
       }
+
+      user.name = this.capitalize(user.name);
+      user.username = user.username.toLowerCase();
+      user.email = user.email.toLowerCase();
     });
 
     return this;
   }
 }
+
+User.capitalize = string => {
+  const capitalized = string.replace(/(?:^|\s)\S/g, a => a.toUpperCase());
+
+  return capitalized;
+};
 
 export default User;
