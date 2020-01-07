@@ -27,12 +27,12 @@ class User extends Model {
 
     return this;
   }
+
+  static capitalize(string) {
+    const capitalized = string.replace(/(?:^|\s)\S/g, a => a.toUpperCase());
+
+    return capitalized;
+  }
 }
-
-User.capitalize = string => {
-  const capitalized = string.replace(/(?:^|\s)\S/g, a => a.toUpperCase());
-
-  return capitalized;
-};
 
 export default User;
