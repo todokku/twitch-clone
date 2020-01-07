@@ -5,7 +5,11 @@
   "author": "Victor Batalha <madivcb@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"cd client && yarn start\" \"cd server && yarn dev\""
+    "start": "concurrently \"cd client && yarn start\" \"cd server && yarn dev\"",
+    "client": "cd client && yarn start",
+    "server": "cd server && yarn dev",
+    "client-build": "cd client && yarn build",
+    "server-build": "cd server && yarn build"
   },
   "dependencies": {
     "concurrently": "^5.0.2"
