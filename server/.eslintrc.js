@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'warn',
     'class-methods-use-this': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'no-console': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
