@@ -29,9 +29,15 @@ class User extends Model {
   }
 
   static capitalize(string) {
-    const capitalized = string.replace(/(?:^|\s)\S/g, a => a.toUpperCase());
+    const capitalized = string
+      .toLowerCase()
+      .replace(/(?:^|\s)\S/g, a => a.toUpperCase());
 
     return capitalized;
+  }
+
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password_hash);
   }
 }
 
