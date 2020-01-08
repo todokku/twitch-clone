@@ -20,6 +20,12 @@ class UserController {
         attributes: {
           exclude: ['password_hash', 'stream_key'],
         },
+        include: [
+          {
+            association: 'avatar',
+            attributes: ['id', 'file_name', 'file_type', 'url'],
+          },
+        ],
       });
 
       return res.status(200).json(users);
@@ -32,6 +38,12 @@ class UserController {
     try {
       const user = await User.findByPk(req.params.user_id, {
         attributes: { exclude: ['stream_key', 'password_hash'] },
+        include: [
+          {
+            association: 'avatar',
+            attributes: ['id', 'file_name', 'file_type', 'url'],
+          },
+        ],
       });
 
       if (!user) return res.status(404).json({ error: 'User not found.' });
