@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
+import { resolve } from 'path';
 
 import './database';
 import routes from './routes';
@@ -16,6 +17,10 @@ class App {
   middlewares() {
     this.server.use(express.json());
     this.server.use(cors());
+    this.server.use(
+      '/static/avatars',
+      express.static(resolve(__dirname, '..', 'uploads', 'avatars'))
+    );
   }
 
   routes() {

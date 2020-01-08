@@ -3,3 +3,6 @@ client/node_modules
 
 server/node_modules
 server/.env
+server/uploads/avatars/*
+!server/uploads/avatars/.gitkeep
+!server/uploads/avatars/placeholder.png
