@@ -67,7 +67,7 @@ class UserController {
   }
 
   async update(req, res) {
-    const { password, old_password, name, email } = req.body;
+    const { password, old_password, name, email, avatar_id } = req.body;
 
     try {
       const user = await User.findByPk(req.user_id);
@@ -77,7 +77,7 @@ class UserController {
       if (password && !(await user.checkPassword(old_password)))
         return res.status(401).json({ error: 'Wrong old password.' });
 
-      await user.update({ password, name, email });
+      await user.update({ password, name, email, avatar_id });
 
       await user.reload({
         attributes: ['name', 'username', 'email', 'stream_key'],
