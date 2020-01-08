@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { Model, STRING, VIRTUAL } from 'sequelize';
+import { Model, STRING, VIRTUAL, INTEGER } from 'sequelize';
 
 class User extends Model {
   static init(sequelize) {
@@ -11,6 +11,7 @@ class User extends Model {
         password: VIRTUAL,
         password_hash: STRING,
         stream_key: STRING,
+        avatar_id: INTEGER,
       },
       { sequelize }
     );
@@ -26,6 +27,13 @@ class User extends Model {
     });
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Avatar, {
+      as: 'avatar',
+      foreignKey: 'avatar_id',
+    });
   }
 
   static capitalize(string) {
